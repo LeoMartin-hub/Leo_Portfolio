@@ -15,13 +15,15 @@ function ExperienceCard({
   entity: string;
   duration: string;
   description: string;
-  status: "Current" | "Pending";
+  // 1. UPDATED: Added all possible statuses to the type definition
+  status: "Current" | "Pending" | "On Hold" | "Completed"; 
 }) {
-  // Dynamic badge styling based on status using complementary theme
+  // 2. UPDATED: Added a color scheme for "Pending"
   const badgeColors = {
-    Current: "bg-emerald-100 text-emerald-800", // Complementary accent
+    Current: "bg-emerald-100 text-emerald-800",
+    Pending: "bg-blue-100 text-blue-800",       
     "On Hold": "bg-amber-100 text-amber-800",
-    Completed: "bg-red-100 text-red-800",       // Primary theme
+    Completed: "bg-red-100 text-red-800",       
   };
 
   return (
