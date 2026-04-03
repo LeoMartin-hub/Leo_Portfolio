@@ -26,17 +26,25 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
+      
+      # Tell GitHub to go inside the inner folder for these steps
       - name: Install dependencies
-        run: npm ci
+        working-directory: ./leo_portfolio
+        run: npm install
+        
       - name: Build
+        working-directory: ./leo_portfolio
         run: npm run build
+        
       - name: Setup Pages
         uses: actions/configure-pages@v4
+        
+      # Tell GitHub where to find the finished dist folder
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist'
+          path: './leo_portfolio/dist'
+          
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
